@@ -1,5 +1,6 @@
 'use strict'
 
+const Smarteditor = require("../../models/Smarteditor");
 const User = require("../../models/User");
 
 const output = {
@@ -12,6 +13,9 @@ const output = {
     register: (req, res) => {
         res.render("home/register");
     },
+    editor: (req, res) => {
+        res.render("home/editor");
+    },
 };
 
 const process = {
@@ -23,6 +27,11 @@ const process = {
     register: async (req, res) => {
         const user = new User(req.body);
         const response = await user.register();
+        return res.json(response);
+    },
+    editor: async (req, res) => {
+        const content = new Smarteditor(req.body);
+        const response = await content.editor();
         return res.json(response);
     }
 };

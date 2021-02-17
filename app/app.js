@@ -7,10 +7,8 @@ const dotenv = require("dotenv");
 const morgan = require("morgan");
 const fs = require("fs");
 
-
 const app = express();
 dotenv.config();
-
 
 // 라우팅
 const home = require("./src/routes/home");
